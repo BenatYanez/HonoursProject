@@ -5,12 +5,12 @@
 # Need to first run 'sconda atsweeps'
 
 # Grid Engine options (lines prefixed with #$)
-$ -N vcf_AT                                            # Name of job in 'wstat' list
-$ -V                                                   # Pass the variables in the current environment to the job
-$ -cwd                                                 # Run file from current directory
-$ -l h=c1                                              # Run array job on this node
-$ -o /data/hartfield/atsweeps/scripts/output/          # Folder for STDOUT print
-$ -e /data/hartfield/atsweeps/scripts/error/           # Folder for STDERR print
+ -N vcf_AT                                            # Name of job in 'wstat' list
+ -V                                                   # Pass the variables in the current environment to the job
+ -cwd                                                 # Run file from current directory
+ -l h=c1                                              # Run array job on this node
+ -o /data/hartfield/atsweeps/scripts/output/          # Folder for STDOUT print
+ -e /data/hartfield/atsweeps/scripts/error/           # Folder for STDERR print
 
 # Obtain sequencing depth for all sites in the genome
 vcftools --vcf /data/hartfield/atsweeps/analyses/Vcf_subset_AT.vcf --site-mean-depth --min-alleles 2 --max-alleles 2 --remove-indels --max-missing 1
