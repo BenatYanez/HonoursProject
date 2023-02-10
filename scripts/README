@@ -1,1 +1,4 @@
 This includes the scripts used for the project
+site_mean_depth calculates the mean depth of every site in the genome
+PoissonDistribution is an R script to calculate the 99.5 confidence boundries of the depth data and to produce a grapth showing the depth
+hstatistics_script is an R script that calculates the H statistics across 20kb windows in a particular chromosome and plots the results
