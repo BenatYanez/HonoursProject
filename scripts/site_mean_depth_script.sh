@@ -13,8 +13,7 @@
  #$ -e /data/hartfield/atsweeps/scripts/error/           # Folder for STDERR print
 
 # Obtain sequencing depth for all sites in the genome
-vcftools --vcf /data/hartfield/atsweeps/analyses/Vcf_subset_AT.vcf --site-mean-depth --min-alleles 2 --max-alleles 2 --remove-indels --max-missing 1
---out /scratch/byanez/filtered_genome_site_mean_depth
+vcftools --vcf /data/hartfield/atsweeps/analyses/Vcf_subset_AT.vcf --site-mean-depth --min-alleles 2 --max-alleles 2 --remove-indels --max-missing 1 --out /scratch/byanez/filtered_genome_site_mean_depth
 
  
 # Copy file back to head folder
