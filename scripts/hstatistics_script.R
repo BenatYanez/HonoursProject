@@ -115,7 +115,7 @@ h1_table <- h1_table[h1_table[, 15] >= h1_quantile,]
 h12_table <- cbind(hapcount_table, h12, h21)
 h12_table <- h12_table[h12_table[, 15] >= h12_quantile,]
 
-# Plot H1, H12 and H2/H1 statistics across the windows with a Bonferroni significance line
+# Plot H1, H12 and H2/H1 statistics across the windows with a Bonferroni significance line anything above the line can be found in H1_table and H12_table
 
 plot(x = midpoint, y = h1, pch = 20, xlab = "Window midpoint (Mb)", main = "H1 with Bonferroni significance line", ylab = "H1")
 abline(h = h1_quantile, lty = 3)
