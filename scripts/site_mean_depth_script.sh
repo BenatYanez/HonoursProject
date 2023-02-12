@@ -17,6 +17,6 @@ vcftools --vcf /data/hartfield/atsweeps/analyses/Vcf_subset_AT.vcf --site-mean-d
 
  
 # Copy file back to head folder
-rsync -avz /scratch/byanez/filtered_site_mean_depth.ldepth.mean  /data/hartfield/atsweeps/analyses/byanez/sitedepth
+rsync -avz /scratch/byanez/filtered_genome_site_mean_depth.ldepth.mean  /data/hartfield/atsweeps/analyses/byanez/sitedepth
   
 # EOF
