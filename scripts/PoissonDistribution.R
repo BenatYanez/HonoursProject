@@ -1,9 +1,9 @@
 #Modified from Matthew Fellbaum
 #Last modified 10/02/2023
 #Put the name of the file on "file name"
-read.table ("file name", header=T)
+read.table ("file name.ldepth.mean", header=T)
 #Open up the Depth file and put it into a R compatible table, put the name of the file on "file name"
-depth_table <-read.table ("file name", header=T)
+depth_table <-read.table ("file name.ldepth.mean", header=T)
 #Calculate mean,var and density
 depth <- density (depth_table$MEAN_DEPTH)
 mean <- mean (depth_table$MEAN_DEPTH)
