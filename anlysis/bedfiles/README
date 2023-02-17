@@ -1,0 +1,2 @@
+The folder contains the BED files for the 5 Arabidopsis thaliana chromosomes. The BED file represents 20kb windows of the chromosome.
+The final bases that could not be included as part of a complete 20kb window are not included
