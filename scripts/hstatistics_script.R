@@ -10,8 +10,8 @@ for(i in chrom.number) {
   #if(i==3) {print ("Number 3")}
   #if(i==4) {print ("Number 4")}
   #if(i==5) {print ("Number 5")}
-  hapcount_infile<- paste("hapcount_chromosome_",1,".hapcount", sep="")
-  recomb_infile<- paste("Rec_AT_Chr",1,".dat", sep ="")
+  hapcount_infile<- paste("hapcount_chromosome_",i,".hapcount", sep="")
+  recomb_infile<- paste("Rec_AT_Chr",i,".dat", sep ="")
   
   # Open hapcount table into R, might need to change c(1:14) if there is more collums with hapcount info 
   hapcount_table <- read.table(hapcount_infile, 
