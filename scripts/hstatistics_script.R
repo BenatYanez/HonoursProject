@@ -143,11 +143,25 @@ for(i in chrom.number) {
   # Identify regions with significant H values.
 
   h1_table <- cbind(hapcount_table, h1, h21)
-  
+    #Save tables for each chromosome in the environment
+  if(i==1) {chrm1tableh1<-h1_table}
+  if(i==2) {chrm2tableh1<-h1_table}
+  if(i==3) {chrm3tableh1<-h1_table}
+  if(i==4) {chrm4tableh1<-h1_table}
+  if(i==5) {chrm5tableh1<-h1_table}
+  #Only have significant results in the table
   h1_table <- h1_table[h1_table[, 16] >= h1_quantile,]
 
   h12_table <- cbind(hapcount_table, h12, h21)
+  if(i==1) {chrm1tableh12<-h12_table}
+  if(i==2) {chrm2tableh12<-h12_table}
+  if(i==3) {chrm3tableh12<-h12_table}
+  if(i==4) {chrm4tableh12<-h12_table}
+  if(i==5) {chrm5tableh12<-h12_table}
+  
+  
   h12_table <- h12_table[h12_table[, 16] >= h12_quantile,]
+
   
   #Save the h1 and h12 tables for each chromosome
   outfileh1 <-paste("H1_Chrom",i,".txt",sep="")
@@ -155,51 +169,110 @@ for(i in chrom.number) {
   write.table(h1_table, outfileh1, quote=F)
   write.table(h12_table, outfileh12, quote=F)
   
-    # Plotting anything above the Bonferroni line can be found in the H1_table and H12_table and then save these as png file
-  plottitleh1<-paste("Chromosome ",i," H1 with Bonferroni significance line",sep="")
-  plottitleh12<-paste("Chromosome ",i," H12 with Bonferroni significance line",sep="")
-  plottitleh21<-paste("Chromosome ",i," H2/H1 with Bonferroni significance line",sep="")
+    # Plotting the values for each chromosome then save these as separate png file
+  #plottitleh1<-paste("Chromosome ",i," H1 with Bonferroni significance line",sep="")
+  #plottitleh12<-paste("Chromosome ",i," H12 with Bonferroni significance line",sep="")
+  #plottitleh21<-paste("Chromosome ",i," H2/H1 with Bonferroni significance line",sep="")
   
-  filetittleh1<-paste("Chromosome",i,"_H1.png",sep="")
-  filetittleh12<-paste("Chromosome",i,"_H12.png",sep="")
-  filetittleh21<-paste("Chromosome",i,"_H2-H1.png",sep="")
-  plot(x = midpoint, y = h1, pch = 20, xlab = "Window midpoint (Mb)", main = plottitleh1, ylab = "H1")
-  abline(h = h1_quantile, lty = 3)
-  dev.copy(png,filetittleh1)
-  dev.off()
+  #filetittleh1<-paste("Chromosome",i,"_H1.png",sep="")
+  #filetittleh12<-paste("Chromosome",i,"_H12.png",sep="")
+  #filetittleh21<-paste("Chromosome",i,"_H2-H1.png",sep="")
+  #plot(x = midpoint, y = h1, pch = 20, xlab = "Window midpoint (Mb)", main = plottitleh1, ylab = "H1")
+  #abline(h = h1_quantile, lty = 3)
+  #dev.copy(png,filetittleh1)
+  #dev.off()
   
-  plot(x = midpoint, y = h12, pch = 20, xlab = "Window midpoint (Mb)", main = plottitleh12, ylab = "H12")
-  abline(h = h12_quantile, lty = 3)
-  dev.copy(png,filetittleh12)
-  dev.off()
+  #plot(x = midpoint, y = h12, pch = 20, xlab = "Window midpoint (Mb)", main = plottitleh12, ylab = "H12")
+  #abline(h = h12_quantile, lty = 3)
+  #dev.copy(png,filetittleh12)
+  #dev.off()
   
-  plot(x = midpoint, y = h21, pch = 20, xlab = "Window midpoint (Mb)", main = plottitleh21, ylab = "H2/H1")
-  abline(h = h21_quantile, lty = 3)
-  dev.copy(png,filetittleh21)
-  dev.off()
+  #plot(x = midpoint, y = h21, pch = 20, xlab = "Window midpoint (Mb)", main = plottitleh21, ylab = "H2/H1")
+  #abline(h = h21_quantile, lty = 3)
+  #dev.copy(png,filetittleh21)
+  #dev.off()
   
-  plottitleRech1<-paste("Chromosome ",i," H1 as a function of recombination rate",sep="")
-  plottitleRech12<-paste("Chromosome ",i," H12 as a function of recombination rate",sep="")
-  plottitleRech21<-paste("Chromosome ",i," H2/H1 as a function of recombination rate",sep="")
+  #plottitleRech1<-paste("Chromosome ",i," H1 as a function of recombination rate",sep="")
+  #plottitleRech12<-paste("Chromosome ",i," H12 as a function of recombination rate",sep="")
+  #plottitleRech21<-paste("Chromosome ",i," H2/H1 as a function of recombination rate",sep="")
   
-  filetitleRech1<-paste("Chromosome",i,"_H1_vs_recombination rate.png",sep="")
-  filetitleRech12<-paste("Chromosome",i,"_H12_vs_recombination rate.png",sep="")
-  filetitleRech21<-paste("Chromosome",i,"_H2-H1_vs_recombination rate.png",sep="")
- plot(x = hapcount_table$x15, y = h1, pch = 20, xlab = "Recombination rate (cM/Mb)", main = plottitleRech1, ylab = "H1")
-  dev.copy(png,filetitleRech1)
-  dev.off()
+  #filetitleRech1<-paste("Chromosome",i,"_H1_vs_recombination rate.png",sep="")
+  #filetitleRech12<-paste("Chromosome",i,"_H12_vs_recombination rate.png",sep="")
+  #filetitleRech21<-paste("Chromosome",i,"_H2-H1_vs_recombination rate.png",sep="")
+ #plot(x = hapcount_table$x15, y = h1, pch = 20, xlab = "Recombination rate (cM/Mb)", main = plottitleRech1, ylab = "H1")
+  #dev.copy(png,filetitleRech1)
+  #dev.off()
   
-  plot(x = hapcount_table$x15, y = h12, pch = 20, xlab = "Recombination rate (cM/Mb)", main = plottitleRech12, ylab = "H12")
-  dev.copy(png,filetitleRech12)
-  dev.off()
+  #plot(x = hapcount_table$x15, y = h12, pch = 20, xlab = "Recombination rate (cM/Mb)", main = plottitleRech12, ylab = "H12")
+  #dev.copy(png,filetitleRech12)
+  #dev.off()
   
-  plot(x = hapcount_table$x15, y = h21, pch = 20, xlab = "Recombination rate (cM/Mb)", main = plottitleRech21, ylab = "H2/H1")
-  dev.copy(png,filetitleRech21)
-  dev.off()
+  #plot(x = hapcount_table$x15, y = h21, pch = 20, xlab = "Recombination rate (cM/Mb)", main = plottitleRech21, ylab = "H2/H1")
+  #dev.copy(png,filetitleRech21)
+  #dev.off()
+ 
 }
 
-#x <- (h1 - mean(h1))/sd(h1)
-#plot(density(x))
-#qqnorm(x)
-#qqline(x)
+
+genomeh1table <- rbind(chrm1tableh1,chrm2tableh1, chrm3tableh1, chrm4tableh1, chrm5tableh1)
+genomeh12table <- rbind(chrm1tableh12,chrm2tableh12, chrm3tableh12, chrm4tableh12, chrm5tableh12)
+
+#Identify significant h1, h12 and h21 values
+genomerows<- nrow(genomeh1table)
+genomebonferroni <- 0.05/genomerows
+genomeh1_quantile <- quantile(genomeh1table$h1, probs = 1 - genomebonferroni)
+genomeh12_quantile <- quantile(genomeh12table$h12, probs = 1 - genomebonferroni)
+genomeh21_quantile <- quantile(genomeh1table$h21, probs = 1 - genomebonferroni)
+significant1table <- genomeh1table[genomeh1table[, 16] >= genomeh1_quantile,]
+significant12table <- genomeh12table[genomeh12table[, 16] >= genomeh12_quantile,]
+
+write.table(significant1table, "Significant H1.txt", quote=F)
+write.table(significant12table, "Significant H12.txt", quote=F)
+ #Information for the creation of custom axis
+tickpos  <- vector(mode ="numeric", length(genomerows))
+colrs1<- rep("gray30", times = nrow(chrm1tableh1))
+colrs2<- rep("gray60", times = nrow(chrm2tableh1))
+colrs3<- rep("gray30", times = nrow(chrm3tableh1))
+colrs4<- rep("gray60", times = nrow(chrm4tableh1))
+colrs5<- rep("gray30", times = nrow(chrm5tableh1))
+colrs <- c(colrs1,colrs2,colrs3,colrs4,colrs5)
+
+tickpos1 <- nrow(chrm1tableh1)/2
+tickpos2 <- length(which(genomeh1table$X1 == 1)) + nrow(chrm2tableh1)/2
+tickpos3 <- length(which(genomeh1table$X1 == 1 | genomeh1table$X1 == 2)) + nrow(chrm3tableh1)/2
+tickpos4 <- length(which(genomeh1table$X1 == 1 | genomeh1table$X1 == 2 | genomeh1table$X1 == 3)) + nrow(chrm4tableh1)/2
+tickpos5 <- length(which(genomeh1table$X1 == 1 | genomeh1table$X1 == 2 | genomeh1table$X1 == 3 | genomeh1table$X1 == 4)) + nrow(chrm5tableh1)/2
+tickpos <- c(tickpos1,tickpos2,tickpos3,tickpos4,tickpos5)
+labl <- c("1","2","3","4","5")
+
+#Plot h1 and h12 in terms of Recombination
+plot(x = genomeh1table$x15, y = genomeh1table$h1, pch = 20, xlab = "Recombination rate (cM/Mb)", main = "H1 in terms of Recombination rate", ylab = "H1")
+plot(x = genomeh12table$x15, y = genomeh12table$h12, pch = 20, xlab = "Recombination rate (cM/Mb)", main = "H12 in terms of Recombination rate", ylab = "H12")
+
+
+plot(x=1:4798 ,y=genomeh1table$h1,col=colrs, pch = 20, xlab = "Chromosome",xaxt= "n", main = "H1 values for all Chromosomes", ylab = "H1")
+  abline(h = genomeh1_quantile, lty = 3)
+  axis(1,at=tickpos, labels=labl)
+  dev.copy(png,"H1AllChromosomes.png")
+  dev.off()
+plot(x=1:4798 ,y=genomeh12table$h12, col=colrs, pch = 20, xlab = "Chromosome", xaxt= "n", main = "H12 values for all Chromosomes", ylab = "H12")
+  abline(h = genomeh12_quantile, lty = 3)
+  axis(1,at=tickpos, labels=labl)
+  dev.copy(png,"H12AllChromosomes.png")
+  dev.off()
+plot(x=1:4798 ,y=genomeh1table$h21, col=colrs, pch = 20, xlab = "Chromosome",xaxt= "n",  main = "H2/H1 values for all Chromosomes", ylab = "H2/H1")
+  abline(h = genomeh21_quantile, lty = 3)
+  axis(1,at=tickpos, labels=labl)
+  dev.copy(png,"H21AllChromosomes.png")
+  dev.off()
+plot (x=genomeh1table$h1, y=genomeh1table$h21, pch=20, xlab="H1", main="H2/H1 vs H1 values for all Chromosome", ylab="H2/H1")
+dev.copy(png,"H1vsH21.png")
+dev.off()
+plot (x=genomeh12table$h12, y=genomeh1table$h21, pch=20, xlab="H12", main="H2/H1 vs H12 values for all Chromosome", ylab="H2/H1")
+dev.copy(png,"H12vsH21.png")
+dev.off()
+x <- (genomeh1table$h1 - mean(genomeh1table$h1))/sd(genomeh1table$h1)
+plot(density(x))
+qqnorm(x)
+qqline(x)
 
