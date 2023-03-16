@@ -23,7 +23,7 @@ chrom1 <- rep("1", each = length(chrom1Start))
 bedfile1 <- data.frame(chrom1,chrom1Start,chrom1End)
 
 #Figure out the naming
-outext1 <-paste("hapcount_Bed_file_chrom1_",windowsize/1000,"kb.bed",sep="")
+outext1 <-paste("hapcount_BED_file_chrom1_",windowsize/1000,"kb.bed",sep="")
 cat("track name=\"atsweeps\" description=\"BED file for hapcount chromosome 1\"\n",
     file = outext1)
 
@@ -46,7 +46,7 @@ chrom2 <- rep("2", each = length(chrom2Start))
 #Create the bedfile table
 bedfile2 <- data.frame(chrom2,chrom2Start,chrom2End)
 
-outext2 <-paste("hapcount_Bed_file_chrom2_",windowsize/1000,"kb.bed",sep="")
+outext2 <-paste("hapcount_BED_file_chrom2_",windowsize/1000,"kb.bed",sep="")
 cat("track name=\"atsweeps\" description=\"BED file for hapcount chromosome 2\"\n",
     file = outext2)
 
@@ -68,7 +68,7 @@ chrom3 <- rep("3", each = length(chrom3Start))
 #Create the bedfile table
 bedfile3 <- data.frame(chrom3,chrom3Start,chrom3End)
 
-outext3 <-paste("hapcount_Bed_file_chrom3_",windowsize/1000,"kb.bed",sep="")
+outext3 <-paste("hapcount_BED_file_chrom3_",windowsize/1000,"kb.bed",sep="")
 cat("track name=\"atsweeps\" description=\"BED file for hapcount chromosome 3\"\n",
     file = outext3)
 
@@ -90,7 +90,7 @@ chrom4 <- rep("4", each = length(chrom4Start))
 #Create the bedfile table
 bedfile4 <- data.frame(chrom4,chrom4Start,chrom4End)
 
-outext4 <-paste("hapcount_Bed_file_chrom4_",windowsize/1000,"kb.bed",sep="")
+outext4 <-paste("hapcount_BED_file_chrom4_",windowsize/1000,"kb.bed",sep="")
 cat("track name=\"atsweeps\" description=\"BED file for hapcount chromosome 4\"\n",
     file = outext4)
 
@@ -112,7 +112,7 @@ chrom5 <- rep("5", each = length(chrom5Start))
 #Create the bedfile table
 bedfile5 <- data.frame(chrom5,chrom5Start,chrom5End)
 
-outext5 <-paste("hapcount_Bed_file_chrom5_",windowsize/1000,"kb.bed",sep="")
+outext5 <-paste("hapcount_BED_file_chrom5_",windowsize/1000,"kb.bed",sep="")
 cat("track name=\"atsweeps\" description=\"BED file for hapcount chromosome 5\"\n",
     file = outext5)
 
