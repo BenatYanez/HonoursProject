@@ -32,7 +32,7 @@ chromosome = int(sys.argv[1])
 #Create a recombination rate map, maybe mat need to half rates becuase of a haploid genome
 rate_map = msprime.RateMap.read_hapmap (recomb, map_col=2)
 
-recomb = open (f'data/hartfield/atsweeps/analyses/byanez/Recombination/Salome_Chr{chromosome}Map_Space.dat',)
+recomb = open (f'/data/hartfield/atsweeps/analyses/byanez/Recombination/Salome_Chr{chromosome}Map_Space.dat',)
 rate_map = msprime.RateMap.read_hapmap(recomb, map_col=2) 
 #print(rate_map)
 recomb.close()
