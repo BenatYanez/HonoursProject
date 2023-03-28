@@ -7,7 +7,7 @@
 #Converts haploid simulated data into diploid so that it can be fed to haplotype_count script
 
 # Grid Engine options (lines prefixed with #$)
-#$ -N vcf_hap_count                                                                     # Name of job in 'wstat' list
+#$ -N vcf_hap_to_diploid                                                                     # Name of job in 'wstat' list
 #$ -V                                                                                           # Pass current environment to job
 #$ -cwd                                                                                 # Run file from current working directory
 #$ -l h=c1                                                                      # Run array job on this sub-server
