@@ -2,7 +2,7 @@
 
 # Modified 28/03/2023
 #
-# Need to first run 'sconda atsweeps'
+# Need to first run 'sconda simulations'
 
 #Converts haploid simulated data into diploid so that it can be fed to haplotype_count script
 
