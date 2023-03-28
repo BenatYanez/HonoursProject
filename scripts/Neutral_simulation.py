@@ -41,7 +41,7 @@ ts = msprime.sim_ancestry({"South":45},ploidy=1, recombination_rate=rate_map, de
 ts = msprime.sim_mutations (ts, rate=7e-9)
 #print (ts)
 #Save file
-directory= 'scratch/byanez/'
+directory= '/scratch/byanez/'
 vcf_file_name = f'Vcf_Chr{chromosome}_Neutral'
 complete_file = os.path.join(directory,vcf_file_name)
 with open(f'{complete_file}.vcf', "w") as vcf_file:
