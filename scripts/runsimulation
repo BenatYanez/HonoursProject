@@ -9,9 +9,18 @@
 #$ -N dem_model-AT                                                                      # Name of job in 'wstat' list
 #$ -V                                                                                           # Pass current environm$#$ -cwd                                                                                         # Run file from current$#$ -l h=c1                                                                                      # Run array job on this$#$ -t  1-5
 #$ -o /data/hartfield/atsweeps/scripts/output/          # Folder for STDOUT print
+#$ -t 1-5
 #$ -e /data/hartfield/atsweeps/scripts/error/           # Folder for STDERR print
-chrmnm=${SGE_TASK_ID}
-python Neutral_simulation.py "$chrmnm"
+chrmnm=${SGE_TASK_ID} 
+for n in {1..10}
+ do
+  python Neutral_simulation.py "$chrmnm" $n
+  # Copy file back to head folder
+  rsync -avz /scratch/byanez/Vcf_Chr"$chrmnm"_Neutral_repeat"$n".vcf /data/hartfield/atsweeps/analyses/byanez/VCF
+  python haploidconversion.py "$chrmnm" $n
 
-# Copy file back to head folder
-rsync -avz /scratch/byanez/Vcf_Chr"$chrmnm"_Neutral.vcf /data/hartfield/atsweeps/analyses/byanez/VCF
+  # Copy file back to head folder
+  rsync -avz /scratch/byanez/Vcf_Chr"$chrmnm"_Neutral_Diploid_repeat"$n".vcf /data/hartfield/atsweeps/analyses/byanez/VCF
+  
+  done
+  
