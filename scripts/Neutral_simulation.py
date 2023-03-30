@@ -2,7 +2,6 @@ import sys
 import msprime
 import tskit
 import os.path
-import numpy as np
 
 demography = msprime.Demography()
 
@@ -30,6 +29,7 @@ demography.add_population_split(time=153000, derived=["South","North"], ancestra
 #print (demography.debug())
 
 chromosome = int(sys.argv[1])
+repeat = int(sys.argv[2])
 #Create a recombination rate map, maybe mat need to half rates becuase of a haploid genome
 rate_map = msprime.RateMap.read_hapmap (recomb, map_col=2)
 
@@ -38,21 +38,13 @@ rate_map = msprime.RateMap.read_hapmap(recomb, map_col=2)
 #print(rate_map)
 recomb.close()
 #Simulate the ancestry, haploid genome since it is highly selfing which in simulations is similar to outcrossing diploid genomes
-#Create the function used for replicates
-def sim_replicates (rate_map, demography, num_replicates):
-  ancestry_reps = msprime.sim_ancestry({"South":45},ploidy=1, recombination_rate=rate_map, demography=demography, num_replicates=num_replicates)
-  for ts in ancestry_reps:
-  #binary mutation model, so we dont get sites with many alleles
-    mutated_ts = msprime.sim_mutations (ts, rate=7e-9, model=msprime.BinaryMutationModel())
-    yield mutated_ts
-
-num_replicates= 10
-for replicate_index, ts in enumerate(sim_replicates(rate_map,demography, num_replicates)):
-  directory= '/scratch/byanez/'
-  vcf_file_name = f'Vcf_Chr{chromosome}_Neutral'
-  complete_file = os.path.join(directory,vcf_file_name)
-  with open(f'{complete_file}.vcf', "w") as vcf_file:
-    ts.write_vcf(vcf_file)
+ts = msprime.sim_ancestry({"South":45},ploidy=1, recombination_rate=rate_map, demography=demography)
+ts = msprime.sim_mutations (ts, rate=7e-9, model=msprime.BinaryMutationModel())
+directory= '/scratch/byanez/'
+vcf_file_name = f'Vcf_Chr{chromosome}_Neutral_repeat{repeat}'
+complete_file = os.path.join(directory,vcf_file_name)
+with open(f'{complete_file}.vcf', "w") as vcf_file:
+  ts.write_vcf(vcf_file)
 #print (ts)
 #Save file
 
