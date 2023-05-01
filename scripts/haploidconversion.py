@@ -1,3 +1,5 @@
+#Convert the haploid vcf files from the neutral simulation to diploid
+
 import sys
 chromosome = int(sys.argv[1])
 repeat = int(sys.argv[2])
