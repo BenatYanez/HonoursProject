@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Modified 21/02/2023
 #Calculate linakge disequilibrium at sites 20kb apart for data that has been filtered
 # Need to first run 'sconda atsweeps'
 
